@@ -31,7 +31,6 @@ def create_string_word_dict(string, stop_list):
     """
     string = re.findall(u'[\u4E00-\u9FD5]', string)
     string = ''.join(string)
-    
     word_list = []
 
     # 结巴分词
@@ -103,7 +102,6 @@ def predict(train_word_dict, spam_count, ham_count, row):
         pih = train_word_dict[w][0]
         # 平滑处理, 每个词汇基数+1，正常邮件数+2
         hp += math.log((float(pih) + 1) / (ham_count + 2))
-        
         pis = train_word_dict[w][1]
         sp += math.log((float(pis) + 1) / (spam_count + 2))
     # 预测结果
